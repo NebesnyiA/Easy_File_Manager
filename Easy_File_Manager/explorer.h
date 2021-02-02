@@ -2,6 +2,8 @@
 #define EXPLORER_H
 
 #include <QMainWindow>
+#include <QDir>
+#include <QFileSystemModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Explorer; }
@@ -16,9 +18,14 @@ public:
     ~Explorer();
 
 private slots:
-    void on_listView_2_doubleClicked(const QModelIndex &index);
+    void Exit();
+
+    void on_Win_One_doubleClicked(const QModelIndex &index);
+
+    void on_Win_Two_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::Explorer *ui;
+    QFileSystemModel *Folders;
 };
 #endif // EXPLORER_H

@@ -6,20 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>484</width>
-    <height>464</height>
+    <width>445</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Explorer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QListView" name="listView_2"/>
-    </item>
-    <item>
-     <widget class="QListView" name="listView"/>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QListView" name="Win_One"/>
+        </item>
+        <item>
+         <widget class="QListView" name="Win_Two"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="B_Exit">
+        <property name="text">
+         <string>Exit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -28,7 +43,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>484</width>
+     <width>445</width>
      <height>21</height>
     </rect>
    </property>

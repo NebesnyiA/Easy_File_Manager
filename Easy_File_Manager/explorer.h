@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QDir>
 #include <QFileSystemModel>
+#include <QFile>
+#include <QMessageBox>
+#include <QInputDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Explorer; }
@@ -18,14 +21,14 @@ public:
     ~Explorer();
 
 private slots:
-    void Exit();
-
     void on_Win_One_doubleClicked(const QModelIndex &index);
-
     void on_Win_Two_doubleClicked(const QModelIndex &index);
+    void on_actionNew_Folder_triggered();
+    void on_actionNew_Folder_For_second_window_triggered();
 
 private:
     Ui::Explorer *ui;
-    QFileSystemModel *Folders;
+    QFileSystemModel *FoldersModel;
+
 };
 #endif // EXPLORER_H

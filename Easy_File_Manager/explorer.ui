@@ -55,22 +55,40 @@
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>Инструменты</string>
+     <string>Tools (First window)</string>
     </property>
     <addaction name="actionNew_Folder"/>
-    <addaction name="actionNew_Folder_For_second_window"/>
+    <addaction name="actionRemove"/>
+   </widget>
+   <widget class="QMenu" name="menuTools_Second_window">
+    <property name="title">
+     <string>Tools (Second window)</string>
+    </property>
+    <addaction name="actionNew_Folder_for_second_window"/>
+    <addaction name="actionRemove_for_second_window"/>
    </widget>
    <addaction name="menu"/>
+   <addaction name="menuTools_Second_window"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNew_Folder">
    <property name="text">
-    <string>New Folder (For fisrt window)</string>
+    <string>New Folder</string>
    </property>
   </action>
-  <action name="actionNew_Folder_For_second_window">
+  <action name="actionRemove">
    <property name="text">
-    <string>New Folder (For second window)</string>
+    <string>Remove</string>
+   </property>
+  </action>
+  <action name="actionNew_Folder_for_second_window">
+   <property name="text">
+    <string>New Folder</string>
+   </property>
+  </action>
+  <action name="actionRemove_for_second_window">
+   <property name="text">
+    <string>Remove</string>
    </property>
   </action>
  </widget>

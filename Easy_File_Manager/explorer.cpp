@@ -29,7 +29,7 @@ void Explorer::on_Win_One_doubleClicked(const QModelIndex &index)
     QFile file;
     QDir dir;
 
-    QFileInfo fileInfo = FoldersModel->fileInfo(index);
+    fileInfo = FoldersModel->fileInfo(index);
     if(fileInfo.fileName() == "..")
     {
         dir = fileInfo.dir();
@@ -91,7 +91,7 @@ void Explorer::on_actionNew_Folder_triggered()
     FoldersModel->mkdir(index, NewFolderName);
 }
 
-void Explorer::on_actionNew_Folder_For_second_window_triggered()
+void Explorer::on_actionNew_Folder_for_second_window_triggered()
 {
     // create new folder in the second window
     //
@@ -112,3 +112,38 @@ void Explorer::on_actionNew_Folder_For_second_window_triggered()
     FoldersModel->mkdir(index, NewFolderName);
 }
 
+void Explorer::on_actionRemove_triggered()
+{
+    // removes the file or folder in the first window
+    //
+
+    QModelIndex index = ui->Win_One->currentIndex();
+
+    if(FoldersModel->fileInfo(index).isFile())
+    {
+        FoldersModel->remove(index);
+    }
+    else if(FoldersModel->fileInfo(index).isDir())
+    {
+        FoldersModel->rmdir(index);
+    }
+}
+
+
+
+void Explorer::on_actionRemove_for_second_window_triggered()
+{
+    // removes the file or folder in the second window
+    //
+
+    QModelIndex index = ui->Win_Two->currentIndex();
+
+    if(FoldersModel->fileInfo(index).isFile())
+    {
+        FoldersModel->remove(index);
+    }
+    else if(FoldersModel->fileInfo(index).isDir())
+    {
+        FoldersModel->rmdir(index);
+    }
+}

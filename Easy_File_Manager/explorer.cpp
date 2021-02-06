@@ -45,6 +45,15 @@ void Explorer::on_Win_One_doubleClicked(const QModelIndex &index)
     {
         List->setRootIndex(index);
     }
+
+    // this part opens the files, pictures, and exe-files
+    // does it in the first window
+    //
+
+    else if(fileInfo.isFile())
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(FoldersModel->filePath(index)));
+    }
 }
 
 void Explorer::on_Win_Two_doubleClicked(const QModelIndex &index)
@@ -68,6 +77,15 @@ void Explorer::on_Win_Two_doubleClicked(const QModelIndex &index)
     else if(fileInfo.isDir())
     {
         List->setRootIndex(index);
+    }
+
+    // this part opens the files, pictures, and exe-files
+    // does it in the second window
+    //
+
+    else if(fileInfo.isFile())
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(FoldersModel->filePath(index)));
     }
 }
 

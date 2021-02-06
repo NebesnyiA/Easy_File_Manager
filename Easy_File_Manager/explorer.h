@@ -9,9 +9,7 @@
 #include <QInputDialog>
 #include <QModelIndex>
 #include <QUrl>
-#include <QDebug>
-#include <stdlib.h>
-#include <stdio.h>
+#include <QDesktopServices>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Explorer; }

@@ -213,3 +213,32 @@ void Explorer::on_actionMove_the_file_for_second_window_triggered()
 
     QFile::rename(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
 }
+
+void Explorer::on_actionCopy_fot_the_first_window_triggered()
+{
+    // is used to copy files from the first window to the second one
+    // possibility to copy dirs will be added later
+    //
+
+    QModelIndex PastIndex = ui->Win_One->currentIndex();
+    QModelIndex NewIndex = ui->Win_Two->currentIndex();
+
+    QFileInfo fi(FoldersModel->filePath(PastIndex));
+    QString Name = fi.fileName();
+
+    QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+}
+
+void Explorer::on_actionCopy_for_the_second_window_triggered()
+{
+    // is used to copy files from the second window to the first one
+    //
+
+    QModelIndex PastIndex = ui->Win_Two->currentIndex();
+    QModelIndex NewIndex = ui->Win_One->currentIndex();
+
+    QFileInfo fi(FoldersModel->filePath(PastIndex));
+    QString Name = fi.fileName();
+
+    QFile::rename(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+}

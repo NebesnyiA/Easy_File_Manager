@@ -41,6 +41,10 @@ private slots:
 
     void on_actionMove_the_file_for_second_window_triggered();
 
+    void on_actionCopy_fot_the_first_window_triggered();
+
+    void on_actionCopy_for_the_second_window_triggered();
+
 private:
     Ui::Explorer *ui;
     QFileSystemModel *FoldersModel;

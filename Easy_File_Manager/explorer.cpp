@@ -14,6 +14,8 @@ Explorer::Explorer(QWidget *parent)
 
     ui->Win_One->setModel(FoldersModel);
     ui->Win_Two->setModel(FoldersModel);
+
+    connect(ui->ExitButton, &QPushButton::clicked, this, &Explorer::Exit);
 }
 
 Explorer::~Explorer()
@@ -344,6 +346,11 @@ void Explorer::on_actionNew_File_for_second_window_triggered()
         file.open(QIODevice::WriteOnly);
         file.close();
     }
+}
+
+void Explorer::Exit()
+{
+    this->close();
 }
 
 

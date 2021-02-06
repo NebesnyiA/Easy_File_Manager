@@ -43,6 +43,7 @@ private slots:
     void on_actionNew_file_for_first_window_triggered();
     void on_actionNew_File_for_second_window_triggered();
 
+    void Exit();
 private:
     Ui::Explorer *ui;
     QFileSystemModel *FoldersModel;

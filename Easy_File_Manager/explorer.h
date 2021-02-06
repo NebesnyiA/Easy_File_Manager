@@ -9,6 +9,9 @@
 #include <QInputDialog>
 #include <QModelIndex>
 #include <QUrl>
+#include <QDebug>
+#include <stdlib.h>
+#include <stdio.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Explorer; }
@@ -29,8 +32,10 @@ private slots:
     void on_actionNew_Folder_triggered();
     void on_actionRemove_triggered();
     void on_actionNew_Folder_for_second_window_triggered();
-
     void on_actionRemove_for_second_window_triggered();
+    void on_actionRename_for_the_first_window_triggered();
+
+    void on_actionRename_for_second_window_triggered();
 
 private:
     Ui::Explorer *ui;

@@ -1,6 +1,7 @@
 #include "explorer.h"
 #include "ui_explorer.h"
 
+
 Explorer::Explorer(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Explorer)
@@ -146,4 +147,41 @@ void Explorer::on_actionRemove_for_second_window_triggered()
     {
         FoldersModel->rmdir(index);
     }
+}
+
+void Explorer::on_actionRename_for_the_first_window_triggered()
+{
+    // renames the files and folders, and saves everything, what has been inside of the folder
+    // is made for the first window
+    //
+
+    QModelIndex index = ui->Win_One->currentIndex();
+    QFile fileinf;
+
+    QString oldName = fileinf.fileName();
+
+    QFileInfo fi(FoldersModel->filePath(index) + oldName);
+    QString ext = fi.suffix();
+
+    QString NewName = QInputDialog::getText(this, "New Name", "Enter new name:");
+
+    QFile::rename(FoldersModel->filePath(index) + oldName, FoldersModel->rootPath() + '/' + NewName + '.' + ext);
+}
+
+void Explorer::on_actionRename_for_second_window_triggered()
+{
+    // also renames the folders and files, but does it in the second window
+    //
+
+    QModelIndex index = ui->Win_Two->currentIndex();
+    QFile fileinf;
+
+    QString oldName = fileinf.fileName();
+
+    QFileInfo fi(FoldersModel->filePath(index) + oldName);
+    QString ext = fi.suffix();
+
+    QString NewName = QInputDialog::getText(this, "New Name", "Enter new name:");
+
+    QFile::rename(FoldersModel->filePath(index) + oldName, FoldersModel->rootPath() + '/' + NewName + '.' + ext);
 }

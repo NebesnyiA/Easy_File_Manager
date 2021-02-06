@@ -60,6 +60,7 @@
     <addaction name="actionNew_Folder"/>
     <addaction name="actionRemove"/>
     <addaction name="actionRename_for_the_first_window"/>
+    <addaction name="actionMove_the_file_for_the_first_window"/>
    </widget>
    <widget class="QMenu" name="menuTools_Second_window">
     <property name="title">
@@ -68,6 +69,7 @@
     <addaction name="actionNew_Folder_for_second_window"/>
     <addaction name="actionRemove_for_second_window"/>
     <addaction name="actionRename_for_second_window"/>
+    <addaction name="actionMove_the_file_for_second_window"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menuTools_Second_window"/>
@@ -101,6 +103,16 @@
   <action name="actionRename_for_second_window">
    <property name="text">
     <string>Rename</string>
+   </property>
+  </action>
+  <action name="actionMove_the_file_for_the_first_window">
+   <property name="text">
+    <string>Move the file</string>
+   </property>
+  </action>
+  <action name="actionMove_the_file_for_second_window">
+   <property name="text">
+    <string>Move the file</string>
    </property>
   </action>
  </widget>

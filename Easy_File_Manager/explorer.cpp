@@ -183,5 +183,33 @@ void Explorer::on_actionRename_for_second_window_triggered()
 
     QString NewName = QInputDialog::getText(this, "New Name", "Enter new name:");
 
-    QFile::rename(FoldersModel->filePath(index) + oldName, FoldersModel->rootPath() + '/' + NewName + '.' + ext);
+    QFile::rename(FoldersModel->filePath(index), FoldersModel->rootPath() + '/' + NewName + '.' + ext);
+}
+
+void Explorer::on_actionMove_the_file_for_the_first_window_triggered()
+{
+    // is used to move the files from the first window to the second one
+    //
+
+    QModelIndex PastIndex = ui->Win_One->currentIndex();
+    QModelIndex NewIndex = ui->Win_Two->currentIndex();
+
+    QFileInfo fi(FoldersModel->filePath(PastIndex));
+    QString Name = fi.fileName();
+
+    QFile::rename(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+}
+
+void Explorer::on_actionMove_the_file_for_second_window_triggered()
+{
+    // is used to move the files from the second window to the first one
+    //
+
+    QModelIndex PastIndex = ui->Win_Two->currentIndex();
+    QModelIndex NewIndex = ui->Win_One->currentIndex();
+
+    QFileInfo fi(FoldersModel->filePath(PastIndex));
+    QString Name = fi.fileName();
+
+    QFile::rename(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
 }

@@ -158,14 +158,14 @@ void Explorer::on_actionRename_for_the_first_window_triggered()
     QModelIndex index = ui->Win_One->currentIndex();
     QFile fileinf;
 
-    QString oldName = fileinf.fileName();
-
-    QFileInfo fi(FoldersModel->filePath(index) + oldName);
+    QFileInfo fi(FoldersModel->filePath(index));
     QString ext = fi.suffix();
+
+    QString filepath (QFileInfo(FoldersModel->filePath(index)).absolutePath());
 
     QString NewName = QInputDialog::getText(this, "New Name", "Enter new name:");
 
-    QFile::rename(FoldersModel->filePath(index) + oldName, FoldersModel->rootPath() + '/' + NewName + '.' + ext);
+    QFile::rename(FoldersModel->filePath(index), filepath + '/' + NewName + '.' + ext);
 }
 
 void Explorer::on_actionRename_for_second_window_triggered()
@@ -174,16 +174,15 @@ void Explorer::on_actionRename_for_second_window_triggered()
     //
 
     QModelIndex index = ui->Win_Two->currentIndex();
-    QFile fileinf;
 
-    QString oldName = fileinf.fileName();
-
-    QFileInfo fi(FoldersModel->filePath(index) + oldName);
+    QFileInfo fi(FoldersModel->filePath(index));
     QString ext = fi.suffix();
+
+    QString filepath (QFileInfo(FoldersModel->filePath(index)).absolutePath());
 
     QString NewName = QInputDialog::getText(this, "New Name", "Enter new name:");
 
-    QFile::rename(FoldersModel->filePath(index), FoldersModel->rootPath() + '/' + NewName + '.' + ext);
+    QFile::rename(FoldersModel->filePath(index), filepath + '/' + NewName + '.' + ext);
 }
 
 void Explorer::on_actionMove_the_file_for_the_first_window_triggered()
@@ -240,5 +239,5 @@ void Explorer::on_actionCopy_for_the_second_window_triggered()
     QFileInfo fi(FoldersModel->filePath(PastIndex));
     QString Name = fi.fileName();
 
-    QFile::rename(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+    QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
 }

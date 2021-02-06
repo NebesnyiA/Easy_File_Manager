@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>464</width>
-    <height>468</height>
+    <width>373</width>
+    <height>351</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Explorer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -29,6 +29,13 @@
       </item>
      </layout>
     </item>
+    <item>
+     <widget class="QPushButton" name="ExitButton">
+      <property name="text">
+       <string>Exit</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -36,7 +43,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>464</width>
+     <width>373</width>
      <height>21</height>
     </rect>
    </property>
@@ -49,6 +56,7 @@
     <addaction name="actionRename_for_the_first_window"/>
     <addaction name="actionMove_the_file_for_the_first_window"/>
     <addaction name="actionCopy_fot_the_first_window"/>
+    <addaction name="actionNew_file_for_first_window"/>
    </widget>
    <widget class="QMenu" name="menuTools_Second_window">
     <property name="title">
@@ -59,6 +67,7 @@
     <addaction name="actionRename_for_second_window"/>
     <addaction name="actionMove_the_file_for_second_window"/>
     <addaction name="actionCopy_for_the_second_window"/>
+    <addaction name="actionNew_File_for_second_window"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menuTools_Second_window"/>
@@ -112,6 +121,16 @@
   <action name="actionCopy_for_the_second_window">
    <property name="text">
     <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionNew_file_for_first_window">
+   <property name="text">
+    <string>New file</string>
+   </property>
+  </action>
+  <action name="actionNew_File_for_second_window">
+   <property name="text">
+    <string>New File</string>
    </property>
   </action>
  </widget>

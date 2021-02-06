@@ -10,6 +10,9 @@
 #include <QModelIndex>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QTextDocumentWriter>
+#include <QMessageBox>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Explorer; }
@@ -32,16 +35,13 @@ private slots:
     void on_actionNew_Folder_for_second_window_triggered();
     void on_actionRemove_for_second_window_triggered();
     void on_actionRename_for_the_first_window_triggered();
-
     void on_actionRename_for_second_window_triggered();
-
     void on_actionMove_the_file_for_the_first_window_triggered();
-
     void on_actionMove_the_file_for_second_window_triggered();
-
     void on_actionCopy_fot_the_first_window_triggered();
-
     void on_actionCopy_for_the_second_window_triggered();
+    void on_actionNew_file_for_first_window_triggered();
+    void on_actionNew_File_for_second_window_triggered();
 
 private:
     Ui::Explorer *ui;

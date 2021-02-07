@@ -245,7 +245,20 @@ void Explorer::on_actionCopy_fot_the_first_window_triggered()
     QFileInfo fi(FoldersModel->filePath(PastIndex));
     QString Name = fi.fileName();
 
-    QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+    if(QFile(FoldersModel->filePath(NewIndex) + '/' + Name).exists())
+    {
+        QMessageBox MBox;
+        MBox.setText("File with such name exists. That file will be overwritten.");
+        MBox.exec();
+
+        QFile::remove(FoldersModel->filePath(NewIndex) + '/' + Name);
+
+        QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+    }
+    else
+    {
+        QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+    }
 }
 
 void Explorer::on_actionCopy_for_the_second_window_triggered()
@@ -259,7 +272,20 @@ void Explorer::on_actionCopy_for_the_second_window_triggered()
     QFileInfo fi(FoldersModel->filePath(PastIndex));
     QString Name = fi.fileName();
 
-    QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+    if(QFile(FoldersModel->filePath(NewIndex) + '/' + Name).exists())
+    {
+        QMessageBox MBox;
+        MBox.setText("File with such name exists. That file will be overwritten.");
+        MBox.exec();
+
+        QFile::remove(FoldersModel->filePath(NewIndex) + '/' + Name);
+
+        QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+    }
+    else
+    {
+        QFile::copy(FoldersModel->filePath(PastIndex), FoldersModel->filePath(NewIndex) + '/' + Name);
+    }
 }
 
 void Explorer::on_actionNew_file_for_first_window_triggered()

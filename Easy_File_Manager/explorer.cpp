@@ -264,87 +264,101 @@ void Explorer::on_actionCopy_for_the_second_window_triggered()
 
 void Explorer::on_actionNew_file_for_first_window_triggered()
 {
-    // gives a possibility to create the files
-    //
+     // gives a possibility to create the files
+     // user can choose format of the file
+     // user can cancel the creation of the file
+     //
 
-    QModelIndex index = ui->Win_One->currentIndex();
+     QModelIndex index = ui->Win_One->currentIndex();
 
-    QString NewFileName = QInputDialog::getText(this, "File name", "Enter new name:");
+     QString NewFileName = QInputDialog::getText(this, "File name", "Enter new name:");
 
-    if(NewFileName.isEmpty())
-    {
-        return;
-    }
+     QStringList items;
+     items << (" ") << tr(".txt") << tr(".doc") << tr(".xlsx") << tr(".fb2") << tr(".pdf");
 
-    QStringList items;
-    items << tr(" ") << tr(".txt") << tr(".doc") << tr(".xlsx") << tr(".fb2") << tr(".pdf");
+     if(NewFileName.isEmpty())
+     {
+         return;
+     }
+     else
+     {
+         bool ok;
 
-    bool ok;
-    QString NewFormat = QInputDialog::getItem(this, tr("Enter Format."),
-                                              tr("Choose the format:"), items, 0, false, &ok);
+         // if the user chooses empty format, the file will not be created
+         QString NewFormat = QInputDialog::getItem(this, tr("Enter Format."),
+                                                      tr("Choose the format:"), items, 0, false, &ok);
 
-    if(NewFormat == " ")
-    {
-        return;
-    }
+         if(NewFormat == " ")
+         {
+             return;
+         }
+         else
+         {
+             QString path (QFileInfo(FoldersModel->filePath(index)).absoluteFilePath());
 
-    QString path (QFileInfo(FoldersModel->filePath(index)).absoluteFilePath());
+             QFile file(path + '/' + NewFileName + NewFormat);
 
-    QFile file(path + '/' + NewFileName + NewFormat);
-
-    if(file.exists()){
-        QMessageBox ErrorWin;
-        ErrorWin.setText("Error! There is the file with such name!");
-        ErrorWin.exec();
-    }
-    else
-    {
-        file.open(QIODevice::WriteOnly);
-        file.close();
-    }
+             if(file.exists()){
+                    QMessageBox ErrorWin;
+                    ErrorWin.setText("Error! There is the file with such name!");
+                    ErrorWin.exec();
+             }
+             else
+             {
+                 file.open(QIODevice::WriteOnly);
+                 file.close();
+             }
+         }
+     }
 }
 
 void Explorer::on_actionNew_File_for_second_window_triggered()
 {
     // gives a possibility to create the files
+    // user can choose format of the file
+    // user can cancel the creation of the file
     //
 
     QModelIndex index = ui->Win_Two->currentIndex();
 
     QString NewFileName = QInputDialog::getText(this, "File name", "Enter new name:");
 
+    QStringList items;
+    items << (" ") << tr(".txt") << tr(".doc") << tr(".xlsx") << tr(".fb2") << tr(".pdf");
+
     if(NewFileName.isEmpty())
     {
         return;
     }
-
-    QStringList items;
-    items << (" ") << tr(".txt") << tr(".doc") << tr(".xlsx") << tr(".fb2") << tr(".pdf");
-
-    bool ok;
-    QString NewFormat = QInputDialog::getItem(this, tr("Enter Format."),
-                                              tr("Choose the format:"), items, 0, false, &ok);
-
-    if(NewFormat == " ")
-    {
-        return;
-    }
-
-    QString path (QFileInfo(FoldersModel->filePath(index)).absoluteFilePath());
-
-    QFile file(path + '/' + NewFileName + NewFormat);
-
-    qDebug() << file;
-
-    if(file.exists()){
-        QMessageBox ErrorWin;
-        ErrorWin.setText("Error! There is the file with such name!");
-        ErrorWin.exec();
-    }
     else
     {
-        file.open(QIODevice::WriteOnly);
-        file.close();
+        bool ok;
+
+        // if the user chooses empty format, the file will not be created
+        QString NewFormat = QInputDialog::getItem(this, tr("Enter Format."),
+                                                     tr("Choose the format:"), items, 0, false, &ok);
+
+        if(NewFormat == " ")
+        {
+            return;
+        }
+        else
+        {
+            QString path (QFileInfo(FoldersModel->filePath(index)).absoluteFilePath());
+
+            QFile file(path + '/' + NewFileName + NewFormat);
+
+            if(file.exists()){
+                   QMessageBox ErrorWin;
+                   ErrorWin.setText("Error! There is the file with such name!");
+                   ErrorWin.exec();
+            }
+            else
+            {
+                file.open(QIODevice::WriteOnly);
+                file.close();
+            }
+        }
     }
 }
 
